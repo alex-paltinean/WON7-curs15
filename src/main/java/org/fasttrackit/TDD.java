@@ -13,6 +13,6 @@ public class TDD {
     }
 
     public void doSomething() {
-//        throw new RuntimeException();
+        throw new RuntimeException();
     }
 }

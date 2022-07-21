@@ -4,8 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,8 +14,7 @@ import java.util.List;
  * Create a function TDD.find that receives a list and a number and returns the index or -1 if not found
  */
 
-//@RunWith(MockitoJUnitRunner.class)
-//@ExtendWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class TDDTest {
 
     @Test
@@ -78,12 +76,13 @@ public class TDDTest {
         Assertions.assertThat(result).isEqualTo(-1);
     }
 
-//    @Test
-//    public void runWithMokito() {
-//        TDD tdd = Mockito.mock(TDD.class);
-//        Mockito.when(tdd.find(Mockito.anyList(), Mockito.any())).thenCallRealMethod();
-//
-//        int result = tdd.find(new ArrayList<>(), 2);
-//        Assertions.assertThat(result).isEqualTo(-1);
-//    }
+    @Test
+    public void runWithMokito() {
+        TDD tdd = Mockito.mock(TDD.class);
+        ArrayList<Integer> list = new ArrayList<>();
+        Mockito.when(tdd.find(list, 2)).thenCallRealMethod();
+
+        int result = tdd.find(list, 2);
+        Assertions.assertThat(result).isEqualTo(-1);
+    }
 }
